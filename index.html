@@ -6,18 +6,19 @@
     <title>Grace of Love Nursery & Aftercare</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
-     <!-- Hamburger Menu -->
-     <div class="hamburger-menu" id="hamburger-menu">
+    <!-- Hamburger Menu -->
+    <div class="hamburger-menu" id="hamburger-menu">
         <i class="fas fa-bars"></i>
     </div>
-    
+
     <!-- Sidebar/Header Section Starts -->
-    <header class="sidebar">
+    <header class="sidebar" id="sidebar">
         <div class="user">
-            <img src="Images\graceoflovelogo.jpg" alt="Grace of Love Nursery">
+            <img src="Images/graceoflovelogo.jpg" alt="Grace of Love Nursery">
             <h3 class="name">Grace of Love Nursery & Aftercare</h3>
             <p class="post">Nurturing the Future, One Child at a Time</p>
         </div>
@@ -54,6 +55,9 @@
             </div>    
         </nav>
     </header>
+
+    <!-- Dark Overlay -->
+    <div class="overlay" id="overlay"></div>
 
     <!-- Scroll Progress Bar -->
     <div id="progress-bar"></div>
@@ -133,52 +137,54 @@
     </div>
 </section>
 
+<!-- Gallery Section Starts -->
+<section class="gallery fade-in" id="gallery">
+    <h1 class="heading">Our <span>Gallery</span></h1>
+    <div class="box-container">
+        <div class="box"><img src="gallery1.jpg" alt="Children playing"></div>
+        <div class="box"><img src="gallery2.jpg" alt="Classroom activities"></div>
+        <div class="box"><img src="gallery3.jpg" alt="Outdoor fun"></div>
+    </div>
+</section>
 
-        <!-- Gallery Section Starts -->
-        <section class="gallery fade-in" id="gallery">
-            <h1 class="heading">Our <span>Gallery</span></h1>
-            <div class="box-container">
-                <div class="box"><img src="gallery1.jpg" alt="Children playing"></div>
-                <div class="box"><img src="gallery2.jpg" alt="Classroom activities"></div>
-                <div class="box"><img src="gallery3.jpg" alt="Outdoor fun"></div>
+<!-- Testimonials Section Starts -->
+<section class="testimonials fade-in" id="testimonials">
+    <h1>Testimonials</h1>
+    <div class="testimonial-container">
+        <div class="testimonial-item">
+            <img src="parent1.jpg" alt="Parent 1" class="testimonial-image">
+            <div class="rating">
+                <span>★★★★★</span>
             </div>
-        </section>
+            <p class="testimonial-text">"Grace of Love Nursery has been a wonderful place for my child. The staff is so caring and attentive. We couldn’t be happier!"</p>
+        </div>
 
-        <!-- Testimonials Section Starts -->
-        <section class="testimonials fade-in" id="testimonials">
-            <h1>Testimonials</h1>
-            <div class="testimonial-container">
-                <div class="testimonial-item">
-                    <img src="parent1.jpg" alt="Parent 1" class="testimonial-image">
-                    <div class="rating">
-                        <span>★★★★★</span>
-                    </div>
-                    <p class="testimonial-text">"Grace of Love Nursery has been a wonderful place for my child. The staff is so caring and attentive. We couldn’t be happier!"</p>
-                </div>
-
-                <div class="testimonial-item">
-                    <img src="parent2.jpg" alt="Parent 2" class="testimonial-image">
-                    <div class="rating">
-                        <span>★★★★☆</span>
-                    </div>
-                    <p class="testimonial-text">"My daughter loves coming here every day. The environment is warm, and she has learned so much in just a few months."</p>
-                </div>
-
-                <div class="testimonial-item">
-                    <img src="parent3.jpg" alt="Parent 3" class="testimonial-image">
-                    <div class="rating">
-                        <span>★★★★★</span>
-                    </div>
-                    <p class="testimonial-text">"Amazing staff and great facilities! I highly recommend Grace of Love Nursery to any parent looking for quality childcare."</p>
-                </div>
+        <div class="testimonial-item">
+            <img src="parent2.jpg" alt="Parent 2" class="testimonial-image">
+            <div class="rating">
+                <span>★★★★☆</span>
             </div>
-        </section>
+            <p class="testimonial-text">"My daughter loves coming here every day. The environment is warm, and she has learned so much in just a few months."</p>
+        </div>
+
+        <div class="testimonial-item">
+            <img src="parent3.jpg" alt="Parent 3" class="testimonial-image">
+            <div class="rating">
+                <span>★★★★★</span>
+            </div>
+            <p class="testimonial-text">"Amazing staff and great facilities! I highly recommend Grace of Love Nursery to any parent looking for quality childcare."</p>
+        </div>
+    </div>
+</section>
+
+
+        
 
         <!-- Contact Us Section Starts -->
         <div class="contact-container">
             <h2>Contact Us</h2>
             <p>We'd love to hear from you! Please fill out the form below and we will get in touch with you shortly.</p>
-            <form action="#" method="post">
+            <form id="contact-form" action="#" method="post">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="Your Full Name" required>

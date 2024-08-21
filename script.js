@@ -1,61 +1,30 @@
-document.querySelector("form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent form submission for validation
-
-    // Toggle Sidebar Visibility
+// Toggle Sidebar Visibility
 document.getElementById('hamburger-menu').addEventListener('click', function() {
     const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
     sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
 });
 
+// Click Outside to Close Sidebar
+document.getElementById('overlay').addEventListener('click', function() {
+    closeSidebar();
+});
 
-    const name = document.getElementById("name");
-    const email = document.getElementById("email");
-    const subject = document.getElementById("subject");
-    const message = document.getElementById("message");
-
-    let isValid = true;
-
-    // Name validation
-    if (name.value.trim() === "") {
-        isValid = false;
-        name.classList.add("error");
-        alert("Please enter your name.");
-    } else {
-        name.classList.remove("error");
-    }
-
-    // Email validation
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email.value.trim())) {
-        isValid = false;
-        email.classList.add("error");
-        alert("Please enter a valid email address.");
-    } else {
-        email.classList.remove("error");
-    }
-
-    // Subject validation
-    if (subject.value.trim() === "") {
-        isValid = false;
-        subject.classList.add("error");
-        alert("Please enter a subject.");
-    } else {
-        subject.classList.remove("error");
-    }
-
-    // Message validation
-    if (message.value.trim() === "") {
-        isValid = false;
-        message.classList.add("error");
-        alert("Please enter your message.");
-    } else {
-        message.classList.remove("error");
-    }
-
-    if (isValid) {
-        this.submit(); // If form is valid, proceed with submission
+// Close Sidebar on 'Esc' key press
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeSidebar();
     }
 });
+
+// Function to close the sidebar and overlay
+function closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+}
 
 $(document).ready(function() {
     // Smooth scroll functionality
@@ -63,7 +32,7 @@ $(document).ready(function() {
         const target = $(this).data('scroll');
         $('html, body').animate({
             scrollTop: $(target).offset().top
-        }, 800); // Adjust the duration as needed
+        }, 800);
     });
 
     // Scroll Progress Bar
@@ -95,7 +64,7 @@ $(document).ready(function() {
         $('.fade-in').each(function() {
             const elementTop = $(this).offset().top;
             const viewportBottom = $(window).scrollTop() + $(window).height();
-            if (elementTop < viewportBottom - 50) { // Adjust -50 for earlier visibility
+            if (elementTop < viewportBottom - 50) {
                 $(this).addClass('visible');
             }
         });
