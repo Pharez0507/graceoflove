@@ -1,6 +1,13 @@
 document.querySelector("form").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent form submission for validation
 
+    // Toggle Sidebar Visibility
+document.getElementById('hamburger-menu').addEventListener('click', function() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('active');
+});
+
+
     const name = document.getElementById("name");
     const email = document.getElementById("email");
     const subject = document.getElementById("subject");
