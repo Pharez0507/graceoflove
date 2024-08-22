@@ -28,56 +28,55 @@ body {
     top: 20px;
     right: 20px;
     z-index: 1100;
-    display: none;
+    display: block; /* Ensure it's always displayed */
     cursor: pointer;
     font-size: 2rem;
     color: var(--primary-color);
-    background-color: rgba(255, 255, 255, 0.8); /* Debugging background */
-    padding: 10px; /* Debugging padding */
-    border: 2px solid red; /* Debugging border */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 768px) {
-    .hamburger-menu {
-        display: block;
-    }
-
-    .sidebar {
-        left: -300px; /* Initially hide the sidebar */
-        transition: left 0.3s ease-in-out;
-    }
-
-    .sidebar.active {
-        left: 0; /* Show sidebar when active */
-    }
-
-    .content {
-        margin-left: 0; /* No offset for the content on small screens */
-    }
-}
-
-/* Sidebar Transition Effect */
+/* Sidebar Styling */
 .sidebar {
-    width: 300px;
+    width: 250px;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -250px; /* Hide sidebar by default */
     height: 100%;
     background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
     box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
-    padding-top: 20px;
     z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: left 0.3s ease-in-out; /* Smooth transition */
+    transition: left 0.3s ease-in-out;
 }
 
 .sidebar.active {
-    left: 0; /* Show sidebar when active */
+    left: 0; /* Slide sidebar into view when active */
 }
 
-/* Dark overlay when sidebar is open */
+/* Content Styling */
+.content {
+    margin-left: 0; /* Full width by default */
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar.active + .content {
+    margin-left: 250px; /* Shift content to the right when sidebar is active */
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 220px; /* Slightly narrower sidebar on smaller screens */
+    }
+
+    .sidebar.active + .content {
+        margin-left: 220px; /* Adjust content shift for smaller screens */
+    }
+}
+
+
+/* Overlay */
 .overlay {
     position: fixed;
     top: 0;
@@ -94,6 +93,32 @@ body {
 .overlay.active {
     display: block;
     opacity: 1;
+}
+
+/* Content Margin on smaller screens when sidebar is active */
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0; /* Remove margin on smaller screens */
+    }
+}
+
+
+/* Sidebar should be hidden initially */
+.sidebar {
+    width: 300px;
+    position: fixed;
+    top: 0;
+    left: -300px; /* Sidebar is off-screen by default */
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    padding-top: 20px;
+    z-index: 1000;
+    transition: left 0.3s ease-in-out; /* Smooth transition */
+}
+
+.sidebar.active {
+    left: 0; /* Sidebar slides in when active */
 }
 
 /* Sidebar Content */
