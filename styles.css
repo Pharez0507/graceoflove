@@ -22,13 +22,36 @@ body {
     padding: 0;
 }
 
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Sidebar is off-screen by default */
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: left 0.3s ease-in-out;
+}
+
+.sidebar.active {
+    left: 0; /* Sidebar slides into view when active */
+}
+
+/* Content Styling */
+.content {
+    margin-left: 0; /* Full width, no shift needed */
+    width: 100%; /* Ensure content fills the screen */
+}
+
 /* Hamburger Menu Styling */
 .hamburger-menu {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1100;
-    display: block; /* Ensure it's always displayed */
+    z-index: 1100; /* Ensure it stays on top */
+    display: block;
     cursor: pointer;
     font-size: 2rem;
     color: var(--primary-color);
@@ -38,40 +61,31 @@ body {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Sidebar Styling */
-.sidebar {
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: -250px; /* Hide sidebar by default */
-    height: 100%;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    transition: left 0.3s ease-in-out;
+/* Navbar and Sidebar Navigation */
+.navbar-item {
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    padding: 15px 10px;
+    transition: all 0.3s ease;
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Optional separator between items */
 }
 
-.sidebar.active {
-    left: 0; /* Slide sidebar into view when active */
+.navbar-item:hover {
+    color: var(--primary-yellow);
 }
 
-/* Content Styling */
-.content {
-    margin-left: 0; /* Full width by default */
-    transition: margin-left 0.3s ease-in-out;
-}
-
-.sidebar.active + .content {
-    margin-left: 250px; /* Shift content to the right when sidebar is active */
-}
-
+/* For smaller screens, make sure content still fills the screen */
 @media (max-width: 768px) {
     .sidebar {
-        width: 220px; /* Slightly narrower sidebar on smaller screens */
+        width: 220px; /* Narrower sidebar for smaller screens */
     }
 
-    .sidebar.active + .content {
-        margin-left: 220px; /* Adjust content shift for smaller screens */
+    .content {
+        margin-left: 0;
+        width: 100%; /* Full width content */
     }
 }
 

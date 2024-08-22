@@ -8,13 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.classList.remove('active');
 });
 
-// Toggle Sidebar Visibility and Content Shifting
+// Toggle Sidebar Visibility
 document.getElementById('hamburger-menu').addEventListener('click', function() {
     const sidebar = document.getElementById('sidebar');
-    const content = document.querySelector('.content');
-
     sidebar.classList.toggle('active');
-    content.classList.toggle('shifted');
 });
 
 // Close Sidebar on 'Esc' key press
@@ -26,23 +23,17 @@ document.addEventListener('keydown', function(event) {
 
 function closeSidebar() {
     const sidebar = document.getElementById('sidebar');
-    const content = document.querySelector('.content');
-
     sidebar.classList.remove('active');
-    content.classList.remove('shifted');
 }
-
-
-document.getElementById('overlay').addEventListener('click', function() {
-    closeSidebar();
-});
-
-
 
 $(document).ready(function() {
     // Smooth scroll functionality
     $('.navbar-item').on('click', function() {
         const target = $(this).data('scroll');
+        
+        // Close the sidebar after a navigation link is clicked
+        closeSidebar();
+        
         $('html, body').animate({
             scrollTop: $(target).offset().top
         }, 800);
